@@ -342,7 +342,10 @@ public class MainWindow {
                             expFile.close();
                             wb.close();
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            MessageBox msg = new MessageBox(shlBspectrum);
+                            msg.setMessage("An error occurred during the export operation!\n" + e.getMessage());
+                            msg.setText("bSpectrum");
+                            msg.open();
                         }
                     }
                 }
@@ -446,6 +449,7 @@ public class MainWindow {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
                 generateChart();
+                table_graph_sash.setWeights(new int[] { 1, 2 });
             }
         });
         mntmGeneratechart.setText("Generate &Chart");
@@ -602,6 +606,7 @@ public class MainWindow {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
                 generateChart();
+                table_graph_sash.setWeights(new int[] { 1, 2 });
             }
         });
         tltmGenerateChart.setImage(SWTResourceManager.getImage(MainWindow.class, "/res/chart_bar.png"));
@@ -919,7 +924,10 @@ public class MainWindow {
                 port = new SerialPort(prop.getProperty("LastUsedPort"));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            MessageBox msg = new MessageBox(shlBspectrum);
+            msg.setMessage("An error occurred during the creation of config.xml!\n" + e.getMessage());
+            msg.setText("bSpectrum");
+            msg.open();
         }
 
         Runnable timer = new Runnable() {
@@ -959,8 +967,9 @@ public class MainWindow {
                     throw new Exception();
             } catch (Exception e) {
                 MessageBox msg = new MessageBox(shlBspectrum);
-                msg.setMessage("An error occurred during the port listening operation! Check debug log for technical information!");
+                msg.setMessage("An error occurred during the port listening operation!\n" + e.getMessage());
                 msg.setText("bSpectrum");
+                msg.open();
             }
     }
 
@@ -971,7 +980,10 @@ public class MainWindow {
                 lblProgramStatus.setText("Paused");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            MessageBox msg = new MessageBox(shlBspectrum);
+            msg.setMessage("An error occurred during the port listening operation!\n" + e.getMessage());
+            msg.setText("bSpectrum");
+            msg.open();
         }
     }
 
@@ -1039,10 +1051,9 @@ public class MainWindow {
             }
         } catch (Exception e) {
             MessageBox msg = new MessageBox(shlBspectrum, SWT.ICON_ERROR);
-            msg.setMessage("An error occurred during the parsing process! Please see the debug log for technical informations.");
+            msg.setMessage("An error occurred during the parsing process!\n" + e.getMessage());
             msg.setText("bSpectrum");
             msg.open();
-            e.printStackTrace();
         }
     }
 
@@ -1138,10 +1149,12 @@ public class MainWindow {
                     }
                 }
                 chart.setVisible(true);
-                table_graph_sash.setWeights(new int[] { 1, 2 });
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            MessageBox msg = new MessageBox(shlBspectrum);
+            msg.setMessage("An error occurred during the creation of the graph!\n" + e.getMessage());
+            msg.setText("bSpectrum");
+            msg.open();
         }
     }
 
@@ -1210,7 +1223,10 @@ public class MainWindow {
                     textLog += port.readString(event.getEventValue());
                     unsavedLog = true;
                 } catch (SerialPortException ex) {
-                    System.out.println(ex);
+                    MessageBox msg = new MessageBox(shlBspectrum);
+                    msg.setMessage("An error occurred during the port listening operation!\n" + ex.getMessage());
+                    msg.setText("bSpectrum");
+                    msg.open();
                 }
         }
     }

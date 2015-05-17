@@ -108,10 +108,9 @@ public class ConcentrationDialog extends Dialog {
                             text.setText("");
                         } catch (Exception e) {
                             MessageBox msg = new MessageBox(shlConcentration, SWT.ICON_ERROR);
-                            msg.setMessage("An error occurred!\n\n" + e.getMessage());
+                            msg.setMessage("An error occurred!\n" + e.getMessage());
                             msg.setText("bSpectrum");
                             msg.open();
-                            e.printStackTrace();
                         }
                     } else {
                         if (table.getItemCount() >= min) {
@@ -142,10 +141,9 @@ public class ConcentrationDialog extends Dialog {
                     text.setText("");
                 } catch (Exception e) {
                     MessageBox msg = new MessageBox(shlConcentration, SWT.ICON_ERROR);
-                    msg.setMessage("An error occurred!\n\n" + e.getMessage());
+                    msg.setMessage("An error occurred!\n" + e.getMessage());
                     msg.setText("bSpectrum");
                     msg.open();
-                    e.printStackTrace();
                 }
             }
         });

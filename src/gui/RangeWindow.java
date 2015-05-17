@@ -9,6 +9,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Spinner;
 
@@ -87,9 +88,16 @@ public class RangeWindow extends Dialog {
         btnOk.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
-                start = spnStart.getSelection();
-                end = spnEnd.getSelection();
-                shlBspectrum.close();
+                if (start <= end) {
+                    start = spnStart.getSelection();
+                    end = spnEnd.getSelection();
+                    shlBspectrum.close();
+                } else {
+                    MessageBox msg = new MessageBox(shlBspectrum, 0);
+                    msg.setMessage("Invalid values detected!");
+                    msg.setText("bSpectrum");
+                    msg.open();
+                }
             }
         });
         btnOk.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
