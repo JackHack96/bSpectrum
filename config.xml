@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="BaudRate">9600</entry>
+<entry key="LogUpdateTime">200</entry>
+<entry key="LastUsedPort">/dev/ttyUSB0</entry>
+<entry key="StopBits">1</entry>
+<entry key="DataBits">8</entry>
+<entry key="Parity">None</entry>
+</properties>
